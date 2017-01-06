@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'homepages/index'
 
-  get 'homepages/results'  => 'homepages#results', as: 'results'
+  get 'homepages/results'  => 'homepages#search_results', as: 'searchresults'
 
   get 'homepages/song'  => 'homepages#song', as: 'song'
 
