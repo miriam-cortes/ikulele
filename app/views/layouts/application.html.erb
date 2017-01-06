@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt" rel="stylesheet">
+
 <head>
   <title>Ikulele</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,7 +10,24 @@
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <nav>
+      <%= form_tag( results_path, :method => "get" ) do %>
+        <p class="small-8 medium-10 columns first-font">
+        <%= text_field_tag :search, params[:search], placeholder: 'Search' %></p>
+        <p class="small-4 medium-2 columns"><%= submit_tag "Search", class: "button third-font" %></p>
+      <% end %>
+    </nav>
+  </header>
+
+  <div class="second-font">
+    <%= yield %>
+  </div>
+
+  <footer class="first-font row">
+    <p class="small-12 columns">| &copy; Miriam Cortes 2017 |</p>
+    <p>This website is made from information lovingly borrowed from <%= link_to("ukulele-tabs.com","http://www.ukulele-tabs.com/", :target => "_blank") %></p>
+  </footer>
 
 </body>
 </html>
