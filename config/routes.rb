@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   get 'homepages/index'
 
-  get 'homepages/results'  => 'homepages#results', as: 'results'
+  get 'homepages/results'  => 'homepages#search_results', as: 'searchresults'
 
-  get 'homepages/song'
+  get 'homepages/song'  => 'homepages#song', as: 'song'
 
-  get 'homepages/artist'
+  get 'homepages/artist'  => 'homepages#artist', as: 'artist'
 
-  get 'homepages/album'
+  get 'homepages/album'  => 'homepages#album', as: 'album'
 
   get 'homepages/random'
 

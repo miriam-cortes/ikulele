@@ -44,6 +44,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'minitest-vcr'
   gem 'webmock'
+  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
 
