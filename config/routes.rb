@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   get 'homepages/results'  => 'homepages#results', as: 'results'
 
-  get 'homepages/song'
+  get 'homepages/song'  => 'homepages#song', as: 'song'
 
-  get 'homepages/artist'
+  get 'homepages/artist'  => 'homepages#artist', as: 'artist'
 
-  get 'homepages/album'
+  get 'homepages/album'  => 'homepages#album', as: 'album'
 
   get 'homepages/random'
 
