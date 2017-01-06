@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+ .first-font {
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-size: 1.3rem;
+ }
+ .second-font{
+   font-family: 'Amatic SC', cursive;
+   font-size: 2em;
+ }
+ .third-font{font-family: 'Rock Salt', cursive;}
+
+ header {
+   top: 0;
+   position: fixed;
+   width: 100%;
+   height: 70px;
+   margin-top: 1%;
+ }
+
+ .homepage-image {
+   /*margin-top: 1%;*/
+   width: 98%;
+   height: 50vh;
+ }
+
+ body {margin: 1%;}
+
+ footer {
+  display: block;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-top: 5vh;
+  background-color: white;
+  color: black;
+  vertical-align: middle;
+  font-weight: 200;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  clear: both;
+  font-size: 1.5rem;
+ }
+
+ .button {background-color: #dae5e8; color: black;}
+ .button:hover {background-color: #272D2D; color: #dae5e8;}
