@@ -4,6 +4,8 @@ gem 'awesome_print'
 gem 'nokogiri'
 gem 'httparty'
 gem 'pry'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 
 #foundation
 gem 'foundation-rails'

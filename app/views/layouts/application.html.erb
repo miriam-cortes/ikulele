@@ -8,8 +8,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
   <header>
     <nav>
       <%= form_tag( searchresults_path, :method => "get" ) do %>
@@ -18,6 +18,15 @@
         <p class="small-4 medium-2 columns"><%= submit_tag "Search", class: "button third-font" %></p>
       <% end %>
     </nav>
+
+    <div id="user-widget" class="first-font">
+      <% if current_user %>
+        Welcome <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <% end %>
+    </div>
   </header>
 
   <main class="second-font">
