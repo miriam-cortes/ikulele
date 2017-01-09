@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
+  get 'songs/show'
+
+  get 'songs/new'
+
+  get 'songs/index'
+
+  get 'songs/all_songs'
+
   root to: 'homepages#index'
 
   get 'homepages/index'
 
   get 'homepages/results'  => 'homepages#search_results', as: 'searchresults'
 
-  get 'homepages/song'  => 'homepages#song', as: 'song'
+  get 'homepages/:song_id/song'  => 'homepages#song', as: 'song'
 
-  get 'homepages/artist'  => 'homepages#artist', as: 'artist'
+  get 'homepages/:artist_id/artist'  => 'homepages#artist', as: 'artist'
 
-  get 'homepages/album'  => 'homepages#album', as: 'album'
+  get 'homepages/:album_id/album'  => 'homepages#album', as: 'album'
 
   get 'homepages/random'
 

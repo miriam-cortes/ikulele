@@ -1,2 +1,14 @@
 <h1>Homepages#song</h1>
 <p>Find me in app/views/homepages/song.html.erb</p>
+
+
+<!-- this is the pictures... -->
+<div class="chords-div small-5 medium-4 columns">
+  <% ( @parse_page.css('div#sticky_crd img') ).each do |image| %>
+    <% @that = "" %>
+    <% @that += image['src'][25...-4] %>
+    <section class="chords small-6 medium-6 columns">
+      <p><%= @that  %></p>
+    </section>
+  <% end %>
+</div>

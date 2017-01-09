@@ -39,6 +39,7 @@ class HomepagesController < ApplicationController
   end
 
   def song
+    
   end
 
   def artist
