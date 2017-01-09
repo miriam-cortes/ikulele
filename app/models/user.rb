@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorite_songs
+  has_many :songs, through: :favorite_songs
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
