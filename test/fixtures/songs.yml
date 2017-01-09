@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: MyString
+  lyrics_tabs: MyString
+  key: MyString
+  sticky_tabs: MyString
+
+two:
+  artist: MyString
+  lyrics_tabs: MyString
+  key: MyString
+  sticky_tabs: MyString
