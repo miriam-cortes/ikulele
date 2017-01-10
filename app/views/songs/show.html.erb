@@ -1,2 +1,32 @@
 <h1>Songs#show</h1>
 <p>Find me in app/views/songs/show.html.erb</p>
+
+<h2>
+  Song: <%= @song.name %>
+</h2>
+
+<!-- trying to get the parsed song to display properly. -->
+<div class="row">
+  <h4 class="tabs small-7 medium-8 columns">
+    <% (@song.lyrics_tabs.split("|")).each do |element| %>
+      <% if element == "br" %>
+        <br />
+      <% elsif element == "a" %>
+        <%= element %>
+      <% else %>
+        <%= element %>
+      <% end %>
+    <% end %>
+  </h4>
+</div>
+
+<!-- this is the pictures... -->
+<div class="chords-div small-5 medium-4 columns">
+  <%# ( @song.sticky_tabs.split(",") ).each do |chord| %>
+    <%# @that = "" %>
+    <%# @that += chord['src'][25...-4] %>
+    <section class="chords small-6 medium-6 columns">
+      <p><%= @song.sticky_tabs %></p>
+    </section>
+  <%# end %>
+</div>
