@@ -1,13 +1,10 @@
-<h1>Songs#show</h1>
-<p>Find me in app/views/songs/show.html.erb</p>
-
 <h2>
-  Song: <%= @song.name %>
+  Song: <%= @song.name %> by <%= @song.artist.name %>
 </h2>
 
 <!-- trying to get the parsed song to display properly. -->
 <div class="row">
-  <h4 class="tabs small-7 medium-8 columns">
+  <p class="tabs small-7 medium-8 columns">
     <% (@song.lyrics_tabs.split("|")).each do |element| %>
       <% if element == "br" %>
         <br />
@@ -17,7 +14,7 @@
         <%= element %>
       <% end %>
     <% end %>
-  </h4>
+  </p>
 </div>
 
 <!-- this is the pictures... -->

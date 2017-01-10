@@ -6,7 +6,7 @@ class Song < ActiveRecord::Base
   def scrape_song(website)
     @page = HTTParty.get(website)
     @parse_page = Nokogiri::HTML(@page)
-    @header_array = @parse_page.css('h2').text.upcase.split(" UKE TAB BY ")
+    @header_array = @parse_page.css('h2').text.split(" Uke tab by ")
     @song_tab_string = ""
     @tab_section = @parse_page.css('pre').children
 

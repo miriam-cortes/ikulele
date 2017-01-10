@@ -21,7 +21,7 @@ class SongsController < ApplicationController
     @chords, @song_tab_string, @header_array = @song.scrape_song(params["song"]["website"])
 
     @song.name = @header_array[0]
-    @song.artist_id =     Artist.find_by(name: @header_array[1]).id
+    @song.artist_id = Artist.find_by(name: @header_array[1]).id
     @song.lyrics_tabs = @song_tab_string
     @song.key = @chords.split(",").first
     @song.sticky_tabs = @chords
@@ -43,7 +43,7 @@ class SongsController < ApplicationController
 
   private
   def find_song
-    if Song.exists?(params[:id].to_i) == true
+    if Song.exists?(params[:id].to_i)
       return @song = Song.find_by(id: params[:id].to_i)
     else
       render :status => 404
@@ -51,10 +51,10 @@ class SongsController < ApplicationController
   end
 
   def find_artist
-    if Artist.exists?(params[:artist_id].to_i) == true
+    if Artist.exists?(params[:artist_id].to_i)
       return @artist = Artist.find(params[:artist_id].to_i)
     else
-      render :status => 404
+      @artist = Artist.new
     end
   end
 

@@ -1,27 +1,3 @@
 // Place all the styles related to the songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.tabs {
-  float: left;
-  display: inline;
-  font-family: 'Inconsolata', monospace;
-  /*font-size: .8rem;*/
-  overflow: scroll;
-  /*width: 100%;*/
-  height: 84vh;
-}
-
-.chords {
-  float: right;
-  display: inline;
-}
-.chords img {
-  width: 100%;
-}
-
-.chords-div {
-  position: absolute;
-  float: right;
-  display: inline;
-}

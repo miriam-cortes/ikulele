@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt" rel="stylesheet">
-
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt" rel="stylesheet">
+
   <title>Ikulele</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -11,29 +12,35 @@
 
 <body>
   <header>
-    <nav>
+    <nav class="row">
       <%= form_tag( searchresults_path, :method => "get" ) do %>
-        <p class="small-8 medium-10 columns first-font">
-        <%= text_field_tag :search, params[:search], placeholder: 'Search' %></p>
-        <p class="small-4 medium-2 columns"><%= submit_tag "Search", class: "button third-font" %></p>
+        <p class="small-8 medium-10 columns">
+          <%= text_field_tag :search, params[:search], placeholder: 'Search'%>
+        </p>
+        <p class="small-4 medium-2 columns">
+          <%= submit_tag "Search", class: "button third-font" %>
+        </p>
       <% end %>
-    </nav>
 
-    <div id="user-widget" class="first-font">
-      <% if current_user %>
-        Welcome <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <% end %>
-    </div>
+      <menu id="user-widget" class="row first-font nav-list">
+        <%# if current_user %>
+          <!-- <button href="#" class="dropdown menu large-screen" data-dropdown-menu data-dropdown="hover1" data-options="is_hover:true; hover_timeout:5000">Welcome <strong><%#= current_user.name %></strong>!</button> -->
+            <!-- <ul id="hover1" class="f-dropdown menu" data-dropdown-content> -->
+              <!-- <li><a href="#">Favorites</a></li> -->
+              <!-- <li><a href="#"><%= link_to "Sign out", signout_path, id: "sign_out" %></a></li> -->
+            <!-- </ul> -->
+        <%# else %>
+          <%#= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <%# end %>
+      </menu>
+    </nav>
   </header>
 
   <main class="second-font">
     <%= yield %>
   </main>
 
-  <footer class="first-font row">
+  <footer class="first-font">
     <p class="small-12 columns">| &copy; Miriam Cortes 2017 |</p>
     <p>This website is made from information lovingly borrowed from <%= link_to("ukulele-tabs.com","http://www.ukulele-tabs.com/", :target => "_blank") %></p>
   </footer>
