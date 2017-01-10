@@ -3,8 +3,8 @@
 
 <div>
   <% @artists.each do |artist| %>
-    <p>
+    <h3 class="third-font">
       <%= link_to artist.name, artist_path(artist.id) %>
-    </p>
+    </h3>
   <% end %>
 </div>

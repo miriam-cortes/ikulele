@@ -52,7 +52,11 @@ class ArtistsController < ApplicationController
   end
 
   def find_artist
-    # @artist = Artist.find_by(name: )
+    if Artist.exists?(params[:id].to_i)
+      return @artist = Artist.find_by(id: params[:id].to_i)
+    else
+      render :status => 404
+    end
   end
 
 end

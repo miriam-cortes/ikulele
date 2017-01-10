@@ -1,10 +1,10 @@
-<h2>
-  Song: <%= @song.name %> by <%= @song.artist.name %>
-</h2>
+<h2 class="third-font"><%= @song.name %></h2>
+<h3 class="second-font"><%= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
+
 
 <!-- trying to get the parsed song to display properly. -->
 <div class="row">
-  <p class="tabs small-7 medium-8 columns">
+  <p class="tabs small-7 large-8 columns">
     <% (@song.lyrics_tabs.split("|")).each do |element| %>
       <% if element == "br" %>
         <br />
@@ -15,15 +15,13 @@
       <% end %>
     <% end %>
   </p>
-</div>
 
 <!-- this is the pictures... -->
-<div class="chords-div small-5 medium-4 columns">
-  <%# ( @song.sticky_tabs.split(",") ).each do |chord| %>
-    <%# @that = "" %>
-    <%# @that += chord['src'][25...-4] %>
-    <section class="chords small-6 medium-6 columns">
-      <p><%= @song.sticky_tabs %></p>
-    </section>
-  <%# end %>
+  <div class="chords-div small-4 large-4 columns">
+    <% ( @song.sticky_tabs.split(",") ).each do |chord| %>
+      <section class="chord small-6 medium-6 columns">
+        <h2 class="third-font"><%= chord %></h2>
+      </section>
+    <% end %>
+  </div>
 </div>

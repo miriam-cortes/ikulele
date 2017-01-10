@@ -18,22 +18,27 @@ class SongsController < ApplicationController
   def create
     @song = Song.new
     @song.website = params["song"]["website"]
-    @chords, @song_tab_string, @header_array = @song.scrape_song(params["song"]["website"])
+    if Song.where(website: @song.website).length == 0
+      @chords, @song_tab_string, @header_array = @song.scrape_song(params["song"]["website"])
 
-    @song.name = @header_array[0]
-    @song.artist_id = Artist.find_by(name: @header_array[1]).id
-    @song.lyrics_tabs = @song_tab_string
-    @song.key = @chords.split(",").first
-    @song.sticky_tabs = @chords
-    # raise
+      @song.name = @header_array[0]
+      @song.artist_id = Artist.find_by(name: @header_array[1]).id
+      @song.lyrics_tabs = @song_tab_string
+      @song.key = @chords.split(",").first
+      @song.sticky_tabs = @chords
+      # raise
 
-    if @song.save
-      redirect_to artist_song_path(@song.artist_id, @song.id)
+      if @song.save
+        redirect_to artist_song_path(@song.artist_id, @song.id)
+      else
+        @error = "did not successfully save, please try again."
+        @post_path = new_song_path
+        @post_method = :post
+        render :new
+      end
     else
-      @error = "did not successfully save, please try again."
-      @post_path = new_song_path
-      @post_method = :post
-      render :new
+      existing_song = Song.find_by(website: @song.website)
+      redirect_to artist_song_path( existing_song.artist.id, existing_song.id )
     end
   end
 
