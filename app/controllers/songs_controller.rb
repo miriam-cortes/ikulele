@@ -1,10 +1,5 @@
 class SongsController < ApplicationController
   before_action :find_song, only: [:show]
-  # before_action :find_artist, except: [:all_songs]
-
-  def all_songs
-    @songs = Song.all
-  end
 
   def show
     puts "No song here" if @song == nil
@@ -47,7 +42,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.where(artist_id:@artist.id)
+    @songs = Song.all
   end
 
   private
