@@ -3,6 +3,9 @@ class Song < ActiveRecord::Base
   has_many :favorite_songs
   has_many :users, through: :favorite_songs
 
+  BASE_URL = "ukulele-chords.com/get?"
+  UKE_API_KEY = ENV["UKE_CHORDS_API_KEY"]
+
   def scrape_song(website)
     @page = HTTParty.get(website)
     @parse_page = Nokogiri::HTML(@page)
@@ -25,17 +28,34 @@ class Song < ActiveRecord::Base
         end
         @song_tab_string += "|"
       end
-
     else
       @song_tab_string += "sorry, details about this tab are not available."
     end
 
     @chords = ""
+
     (@parse_page.css('div#sticky_crd img')).each do |chord|
-      @chords += chord['src'][25...-4] + ","
+        @chords += chord['src'][25...-4] + ","
     end
+    @chords.gsub!("_","#")
 
     return @chords, @song_tab_string, @header_array
+  end
+
+  def get_chords_from_api(sticky_tabs)
+    # url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord}" + "&typ=#{type}"
+    # data = HTTParty.get(url)
+    @chords_array = []
+
+    sticky_tabs.split(",").each do |chord|
+      case chord[0..1]
+      when "Ab"
+      end
+        raise
+      @chords_array.push()
+    end
+
+    return @chords_array
   end
 
 end

@@ -8,6 +8,8 @@ class SongsController < ApplicationController
 
   def show
     puts "No song here" if @song == nil
+    @song.get_chords_from_api(@song.sticky_tabs)
+    raise
   end
 
   def new
@@ -29,7 +31,6 @@ class SongsController < ApplicationController
       @song.lyrics_tabs = @song_tab_string
       @song.key = @chords.split(",").first
       @song.sticky_tabs = @chords
-      # raise
 
       if @song.save
         redirect_to artist_song_path(@song.artist_id, @song.id)

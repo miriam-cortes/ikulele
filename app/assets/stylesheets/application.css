@@ -2,6 +2,10 @@
 @import url('foundation_and_overrides.scss');
 @import url('_settings.scss');
 
+.nav-background-pic {
+  background: url("http://www.immersion-3d.com/wp-content/uploads/2015/12/image-placeholder-500x500.jpg") no-repeat center;
+  background-size: contain;
+}
 
  .first-font {
    font-family: 'Open Sans Condensed', sans-serif;

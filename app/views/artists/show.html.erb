@@ -1,8 +1,8 @@
-<h3><%= @artist.name %></h3>
+<h3 class="third-font"><%= @artist.name %></h3>
 
 
-<p>
+<h4 class="second-font">
   <% @artist.songs.each do |song| %>
     <%= link_to song.name, artist_song_path(@artist.id, song.id) %>
   <% end %>
-</p>
+</h4>
