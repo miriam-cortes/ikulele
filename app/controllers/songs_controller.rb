@@ -22,6 +22,9 @@ class SongsController < ApplicationController
       @chords, @song_tab_string, @header_array = @song.scrape_song(params["song"]["website"])
 
       @song.name = @header_array[0]
+      if Artist.find_by(name: @header_array[1]) == nil
+        Artist.create(name: @header_array[1])
+      end
       @song.artist_id = Artist.find_by(name: @header_array[1]).id
       @song.lyrics_tabs = @song_tab_string
       @song.key = @chords.split(",").first
