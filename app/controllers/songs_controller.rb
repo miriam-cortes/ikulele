@@ -8,8 +8,8 @@ class SongsController < ApplicationController
 
   def show
     puts "No song here" if @song == nil
-    @song.get_chords_from_api(@song.sticky_tabs)
-    raise
+    # @song.get_chords_from_api(@song.sticky_tabs)
+    # raise
   end
 
   def new

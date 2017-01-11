@@ -1,16 +1,18 @@
 <h1>Search Results</h1>
 
-<h3>Your search returned <%= @number_artist_results %> artists</h3>
-  <% @artist_link_array.each do |artist| %>
-    <p><%= link_to( artist[0], artist_path( artist[1] ),class: "second-font" ) %></p>
-  <% end %>
+<h3>Your search for "<%= @search_term %>" returned </h3>
 
-<h3>Your search returned <%= @number_song_results %> songs</h3>
-  <% @songs_list_array.each do |song| %>
-    <p><%= link_to( song[0], song_path( song[1] ),class: "second-font" ) %></p>
-  <% end %>
+<h3><%=  %> artists</h3>
+  <%# @artist_link_array.each do |artist| %>
+    <p><%#= link_to( artist[0], artist_path( artist[1] ),class: "second-font" ) %></p>
+  <%# end %>
 
-<h3>Your search returned <%= @number_album_results %> albums</h3>
-  <% @albums_link_array.each do |album| %>
-    <p><%= link_to( album[0], album_path( album[1] ),class: "second-font" ) %></p>
-  <% end %>
+<h3><%#= @number_song_results %> songs</h3>
+  <%# @songs_list_array.each do |song| %>
+    <p><%#= link_to( song[0], song_path( song[1] ),class: "second-font" ) %></p>
+  <%# end %>
+
+<h3><%#= @number_album_results %> albums</h3>
+  <%# @albums_link_array.each do |album| %>
+    <p><%#= link_to( album[0], album_path( album[1] ),class: "second-font" ) %></p>
+  <%# end %>

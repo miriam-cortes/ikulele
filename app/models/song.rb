@@ -42,20 +42,21 @@ class Song < ActiveRecord::Base
     return @chords, @song_tab_string, @header_array
   end
 
-  def get_chords_from_api(sticky_tabs)
-    # url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord}" + "&typ=#{type}"
-    # data = HTTParty.get(url)
-    @chords_array = []
-
-    sticky_tabs.split(",").each do |chord|
-      case chord[0..1]
-      when "Ab"
-      end
-        raise
-      @chords_array.push()
-    end
-
-    return @chords_array
-  end
+  # def get_chords_from_api(sticky_tabs)
+  #   # url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord}" + "&typ=#{type}"
+  #   # data = HTTParty.get(url)
+  #   @chords_array = []
+  #
+  #   # sticky_tabs.split(",").each do |chord|
+  #   #   case chord[0..1]
+  #   #   when "A#"
+  #   #
+  #   #   end
+  #   #     raise
+  #   #   @chords_array.push()
+  #   # end
+  #
+  #   return @chords_array
+  # end
 
 end
