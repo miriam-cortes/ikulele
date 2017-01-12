@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :songs
-  get "/song/:song_id" => 'song#show', as: 'fetch_song'
 
   get 'homepages/index'
 

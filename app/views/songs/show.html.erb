@@ -2,16 +2,6 @@
 <h3 class="second-font"><%= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
 
 
-
-
-
-<div class="grid">
-  <%= render partial: 'song_show_js', locals: { song: @song} %>
-</div>
-
-
-
-
 <!-- parsed song -->
 <div class="row">
   <p class="tabs small-7 large-8 columns">
