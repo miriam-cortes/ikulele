@@ -1,9 +1,8 @@
 class SongsController < ApplicationController
-  # before_action :find_song, only: [:show]
+  before_action :find_song, only: [:show]
 
   def show
-    render js: "alert('The number is: #{params[:id]}')"
-    # puts "No song here" if @song == nil
+    puts "No song here" if @song == nil
     # @song.get_chords_from_api(@song.sticky_tabs)
     # raise
   end
@@ -63,7 +62,8 @@ class SongsController < ApplicationController
     end
   end
 
-##### NOTHING REFERS TO THIS METHOD #####
+  ##### NOTHING REFERS TO THIS METHOD #####
+
   def song_params
     params.require(:song).permit(:website)
   end
