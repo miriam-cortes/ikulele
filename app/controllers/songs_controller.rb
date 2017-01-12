@@ -1,3 +1,5 @@
+### app/controllers/songs_controller.rb ### 
+
 class SongsController < ApplicationController
   before_action :find_song, only: [:show]
 

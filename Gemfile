@@ -6,6 +6,7 @@ gem 'httparty'
 gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+gem 'react-rails', '~> 1.0'
 
 #foundation
 gem 'foundation-rails'

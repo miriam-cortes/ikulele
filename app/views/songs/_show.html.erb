@@ -1,0 +1,4 @@
+<%# app/views/songs/_show.html.erb %>
+
+<h2 class="cursive-font"><%= @song.name %></h2>
+<h3 class="skinny-font"><%= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
