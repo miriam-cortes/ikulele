@@ -5,12 +5,8 @@ Rails.application.routes.draw do
     resources :songs
   end
 
-  # get 'songs/:song_id/show'
-  # get 'songs/create'
-  # get 'songs/index'
-
-  get 'songs/all_songs' => 'songs#all_songs', as: 'all_songs'
   resources :songs
+  get "/song/:song_id" => 'song#show', as: 'fetch_song'
 
   get 'homepages/index'
 
