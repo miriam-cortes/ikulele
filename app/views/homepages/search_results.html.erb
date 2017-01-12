@@ -1,12 +1,12 @@
 
-<h3 class="second-font">Your search for "<%= @search_term %>" returned </h3>
+<h3 class="skinny-font">Your search for "<%= @search_term %>" returned </h3>
 
-<h3 class="second-font"><%= @artist_search_results.length %> artists</h3>
+<h3 class="skinny-font"><%= @artist_search_results.length %> artists</h3>
   <% @artist_search_results.each do |artist| %>
     <h4 class="cursive-font"><%= link_to( artist.name, artist_path( artist.id ) ) %></h4>
   <% end %>
 
-<h3 class="second-font"><%= @song_search_results.length %> songs</h3>
+<h3 class="skinny-font"><%= @song_search_results.length %> songs</h3>
   <% @song_search_results.each do |song| %>
     <h4 class="cursive-font"><%= link_to( song.name, song_path( song.artist_id, song.id )) %></h4>
   <% end %>

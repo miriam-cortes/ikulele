@@ -9,11 +9,11 @@ a:hover {
   color: black;
 }
 
- .first-font {
+ .footer-font {
    font-family: 'Open Sans Condensed', sans-serif;
    font-size: 1rem;
  }
- .second-font{
+ .skinny-font{
    font-family: 'Amatic SC', cursive;
  }
  .cursive-font, .header-font{

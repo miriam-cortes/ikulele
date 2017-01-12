@@ -28,5 +28,6 @@ class HomepagesController < ApplicationController
   end
 
   def favorites
+    
   end
 end

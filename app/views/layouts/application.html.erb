@@ -4,12 +4,12 @@
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt|Inconsolata" rel="stylesheet">
 
   <title>Ikulele</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
-<body class="">
+<body>
   <header class="fixed row">
     <img src="http://old.ryanfunduk.com/assets/flex3-centered-overlays/overlay1off.png" class="small-12 columns homepage-image"/>
     <nav class="small-12 columns">
@@ -20,9 +20,10 @@
       <!-- LOGIN DROP DOWN -->
       <li class="header-font dropdown large-3 small-6 columns">
         <% if current_user %>
-          <a class="dropbtn">Welcome <%= current_user.name %>!</a>
+          <a class="dropbtn">Hi, <%= current_user.name %>!</a>
           <div class="dropdown-content">
             <%= link_to "Favorites", favorites_path(session[:user_id]) %>
+            <%= link_to "New song", new_song_path %>
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
           </div>
         <% else %>
@@ -43,11 +44,11 @@
 
   </header>
 
-  <main class="row second-font">
+  <main class="row skinny-font">
     <%= yield %>
   </main>
 
-  <footer class="first-font">
+  <footer class="footer-font">
     <p class="small-12 columns">| &copy; Miriam Cortes 2017 |</p>
   </footer>
 

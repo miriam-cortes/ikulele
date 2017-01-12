@@ -1,14 +1,19 @@
 <h5 class="error-message"><%= @error if @error %></h5>
 
-<%= form_for @song,
-  method: @post_method,
-  url: {action: "create"} do |f| %>
+<div class="row">
+  <h3 class="small-12 columns skinny-font">At the moment new songs can be added from  <a href="http://www.ukulele-tabs.com/">Ukulele-Tabs</a>. </h3>
+  <h3 class="small-12 columns skinny-font">Just find the version you like best and paste the link below: </h3>
 
-  <div class="form_attribute">
-    <%= f.label :website %>
-    <%= f.text_field :website %>
-  </div>
-  <div class="form_attribute">
-  <%= f.submit class:"button" %>
-  </div>
-<% end %>
+  <%= form_for @song,
+    method: @post_method, class: "small-12 columns",
+    url: {action: "create"} do |f| %>
+
+    <div class="form_attribute small-9 columns">
+      <%= f.text_field :website, placeholder: 'website' %>
+    </div>
+    <div class="form_attribute">
+    <h3><%= f.submit class:"button cursive-font small-2 columns" %></h3>
+    </div>
+  <% end %>
+
+</div>
