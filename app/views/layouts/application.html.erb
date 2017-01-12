@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt" rel="stylesheet">
-
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans+Condensed:300|Rock+Salt|Inconsolata" rel="stylesheet">
+
   <title>Ikulele</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <header>
-    <nav>
-      <%= form_tag( searchresults_path, :method => "get" ) do %>
-        <p class="small-8 medium-10 columns first-font">
-        <%= text_field_tag :search, params[:search], placeholder: 'Search' %></p>
-        <p class="small-4 medium-2 columns"><%= submit_tag "Search", class: "button third-font" %></p>
-      <% end %>
+<body class="">
+  <header class="fixed row">
+    <img src="http://old.ryanfunduk.com/assets/flex3-centered-overlays/overlay1off.png" class="small-12 columns homepage-image"/>
+    <nav class="small-12 columns">
+      <li class="large-3 small-6 columns header-font"><%= link_to "Home", root_path %></li>
+      <li class="large-3 small-6 columns header-font"><%= link_to "All Songs", songs_path %></li>
+      <li class="large-3 small-6 columns header-font"><%= link_to "All Artists", artists_path %></li>
+
+      <!-- LOGIN DROP DOWN -->
+      <li class="header-font dropdown large-3 small-6 columns">
+        <% if current_user %>
+          <a class="dropbtn">Welcome <%= current_user.name %>!</a>
+          <div class="dropdown-content">
+            <%= link_to "Favorites", favorites_path(session[:user_id]) %>
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          </div>
+        <% else %>
+          <%= link_to "FB Sign-in", "/auth/facebook", id: "sign_in", class: "header-font" %>
+        <% end %>
+      </li>
+      <div class="small-12 columns search-form">
+        <%= form_tag( searchresults_path, :method => "get" ) do %>
+          <div class="small-9 columns">
+            <%= text_field_tag :search, params[:search], placeholder: 'Search' %>
+          </div>
+          <div class="small-2 columns">
+            <%= submit_tag "Search", class: "button cursive-font" %>
+          </div>
+        <% end %>
+      </div>
     </nav>
 
-    <div id="user-widget" class="first-font">
-      <% if current_user %>
-        Welcome <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <% end %>
-    </div>
   </header>
 
-  <main class="second-font">
+  <main class="row second-font">
     <%= yield %>
   </main>
 
-  <footer class="first-font row">
+  <footer class="first-font">
     <p class="small-12 columns">| &copy; Miriam Cortes 2017 |</p>
-    <p>This website is made from information lovingly borrowed from <%= link_to("ukulele-tabs.com","http://www.ukulele-tabs.com/", :target => "_blank") %></p>
   </footer>
 
 </body>

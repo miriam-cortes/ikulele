@@ -1,0 +1,8 @@
+<h3 class="cursive-font"><%= @artist.name %></h3>
+
+
+<div>
+  <% @artist.songs.each do |song| %>
+    <h4 class="second-font"><%= link_to song.name, artist_song_path(@artist.id, song.id) %></h4>
+  <% end %>
+</div>

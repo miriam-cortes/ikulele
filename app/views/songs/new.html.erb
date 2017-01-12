@@ -1,0 +1,14 @@
+<h5 class="error-message"><%= @error if @error %></h5>
+
+<%= form_for @song,
+  method: @post_method,
+  url: {action: "create"} do |f| %>
+
+  <div class="form_attribute">
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  </div>
+  <div class="form_attribute">
+  <%= f.submit class:"button" %>
+  </div>
+<% end %>
