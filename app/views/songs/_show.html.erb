@@ -1,4 +1,32 @@
 <%# app/views/songs/_show.html.erb %>
 
-<h2 class="cursive-font"><%= @song.name %></h2>
-<h3 class="skinny-font"><%= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
+<h2 class="cursive-font"><%#= @song.name %></h2>
+<h3 class="skinny-font"><%#= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
+
+<h1><%#= react_component('Song::ActiveRecord', {name: 'A Hard Days Night'}, {prerender: true}) %></h1>
+
+
+
+<!-- parsed song -->
+<div class="row">
+  <p class="tabs small-7 large-9 columns">
+    <%# (@song.lyrics_tabs.split("|")).each do |element| %>
+      <%# if element == "br" %>
+        <br />
+      <%# elsif element == "a" %>
+        <%#= element %>
+      <%# else %>
+        <%#= element %>
+      <%# end %>
+    <%# end %>
+  </p>
+
+<!-- this is the tab pictures -->
+  <div class="chords-div small-4 large-3 columns">
+    <%# ( @song.sticky_tabs.split(",") ).each do |chord| %>
+      <section class="chord small-6 medium-6 columns">
+        <h2 class="cursive-font"><%#= chord %></h2>
+      </section>
+    <%# end %>
+  </div>
+</div>

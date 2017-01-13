@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
   has_many :favorite_songs
   has_many :users, through: :favorite_songs
 
-  BASE_URL = "ukulele-chords.com/get?"
+  BASE_URL = "http://ukulele-chords.com/get?"
   UKE_API_KEY = ENV["UKE_CHORDS_API_KEY"]
 
   def scrape_song(website)
@@ -42,21 +42,45 @@ class Song < ActiveRecord::Base
     return @chords, @song_tab_string, @header_array
   end
 
-  # def get_chords_from_api(sticky_tabs)
-  #   # url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord}" + "&typ=#{type}"
-  #   # data = HTTParty.get(url)
-  #   @chords_array = []
-  #
-  #   # sticky_tabs.split(",").each do |chord|
-  #   #   case chord[0..1]
-  #   #   when "A#"
-  #   #
-  #   #   end
-  #   #     raise
-  #   #   @chords_array.push()
-  #   # end
-  #
-  #   return @chords_array
-  # end
+  def get_chords_from_api(sticky_tabs)
+    @chords_array = []
+
+    sticky_tabs.split(",").each do |chord|
+      chord_name, type = self.set_name_and_type(chord)
+
+      url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord_name}" + "&typ=#{type}"
+      response = HTTParty.get(url)
+      mini_chord_pic_url = response.parsed_response["uc"]["chord"][0]["chord_diag_mini"]
+      @chords_array.push(mini_chord_pic_url)
+    end
+
+    return @chords_array.join(" ")
+  end
+
+  def set_name_and_type(chord)
+    if chord[1] == "b" || chord[1] == "#"
+      chord_name = chord[0..1]
+      if chord.length == 2
+        type = "major"
+      elsif chord.length == 3 && chord[2] == "m"
+        type = "minor"
+      else
+        type = chord[2..-1]
+      end
+    else
+      chord_name = chord[0]
+      if chord.length == 1
+        type = "major"
+      elsif chord.length == 2 && chord[1] == "m"
+        type = "minor"
+      elsif chord.length == 2
+        type = chord[1..-1]
+      end
+    end
+    # raise
+
+
+    return chord_name, type
+  end
 
 end

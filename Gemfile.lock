@@ -96,6 +96,7 @@ GEM
     json (1.8.3)
     jwt (0.1.13)
       multi_json (>= 1.5)
+    libxml-ruby (2.9.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -248,6 +249,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  libxml-ruby
   minitest-reporters
   minitest-vcr
   nokogiri

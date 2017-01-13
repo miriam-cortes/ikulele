@@ -38,4 +38,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # config/environments/development.rb
+  Ikulele::Application.configure do
+    config.react.variant = :development
+  end
+
+  Ikulele::Application.configure do
+    config.react.addons = true # defaults to false
+  end
 end

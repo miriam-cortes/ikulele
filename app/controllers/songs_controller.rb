@@ -1,12 +1,13 @@
-### app/controllers/songs_controller.rb ### 
+### app/controllers/songs_controller.rb ###
 
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show]
+  before_action :find_song, :find_artist, only: [:show]
 
   def show
     puts "No song here" if @song == nil
-    # @song.get_chords_from_api(@song.sticky_tabs)
+    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
     # raise
+
   end
 
   def new
