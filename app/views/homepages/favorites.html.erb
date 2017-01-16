@@ -1,2 +1,7 @@
-<h1>Homepages#favorites</h1>
-<p>Find me in app/views/homepages/favorites.html.erb</p>
+<h1 class="skinny-font small-12 columns"><%= current_user.name %>'s Favorites</h1>
+
+<div class="small-12 columns">
+  <% @favorites.each do |favorite| %>
+    <h4 class="cursive-font"><%= link_to( Song.find(favorite.song_id).name, song_path(favorite.song_id) ) %></h4>
+  <% end %>
+</div>

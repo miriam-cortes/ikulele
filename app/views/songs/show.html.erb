@@ -1,8 +1,7 @@
 <%# app/views/songs/show.html.erb %>
 
 <div id="song" class="small-12 columns">
-  <h2 class="cursive-font"><%= @song.name %></h2>
   <h3 class="skinny-font"><%= link_to @song.artist.name, artist_path(@song.artist.id) %></h3>
-  <%= react_component 'Song', { songData: @song, artistData: @artist } %>
+  <%= react_component 'Song', { songData: @song, favoriteData: @my_favorite } %>
 
 </div>

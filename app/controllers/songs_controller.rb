@@ -6,6 +6,7 @@ class SongsController < ApplicationController
   def show
     puts "No song here" if @song == nil
     @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+    @my_favorite = is_favorite(@song)
     # raise
 
   end
@@ -64,6 +65,16 @@ class SongsController < ApplicationController
       @artist = Artist.new
     end
   end
+
+  def is_favorite(song)
+    favorites_array = FavoriteSong.where(user_id: current_user.id, song_id: @song.id)
+    if ( favorites_array ).length == 1
+      return "❤️"
+    else
+      return "♡"
+    end
+  end
+
 
   ##### NOTHING REFERS TO THIS METHOD #####
 

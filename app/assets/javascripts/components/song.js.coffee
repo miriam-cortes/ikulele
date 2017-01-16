@@ -4,12 +4,28 @@
   getInitialState: ->
     song: @props.songData
     artist: @props.artistData
+    my_favorite: @props.favoriteData
   getDefaultProps: ->
     song: ""
     artist: ""
+    my_favorite: ""
   render: ->
     React.DOM.div
       className: 'song_holder'
+      React.DOM.h3
+        className: 'small-1 columns favorite'
+        id: 'favorite'
+        @state.my_favorite
+        # if ( @state.favorite == null ) {
+        #   "♡"
+        # } else {
+        #   "❤️"
+        # }
+        # this.clickHandler = -> alert "clicked"
+        # element.addEventListener "click", (e) => this.clickHandler(e)
+      React.DOM.h2
+        className: 'cursive-font small-6 columns'
+        @state.song.name
       React.DOM.h2
         className: 'tabs small-8 large-8 columns'
         for i in @state.song.lyrics_tabs.split("|")
