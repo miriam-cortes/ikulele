@@ -11,13 +11,6 @@
     React.DOM.div
       className: 'song_holder'
       React.DOM.h2
-        className: 'cursive-font'
-        @state.song.name
-      # React.DOM.a
-      #   className: 'skinny-font'
-      #   @state.artist.name
-      #   href: '/'
-      React.DOM.h2
         className: 'tabs small-8 large-8 columns'
         for i in @state.song.lyrics_tabs.split("|")
           React.DOM.p
