@@ -1,6 +1,6 @@
-<h1 class="skinny-font">All Artists</h1>
+<h1 class="skinny-font small-12 columns">All Artists</h1>
 
-<div>
+<div class="small-12 columns">
   <% @artists.each do |artist| %>
     <h3 class="cursive-font">
       <%= link_to artist.name, artist_path(artist.id) %>

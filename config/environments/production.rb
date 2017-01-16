@@ -76,4 +76,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # config/environments/production.rb
+  Ikulele::Application.configure do
+    config.react.variant = :production
+  end
+
+  Ikulele::Application.configure do
+    config.react.addons = true # defaults to false
+  end
+
 end

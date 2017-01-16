@@ -1,10 +1,13 @@
+### app/controllers/songs_controller.rb ###
+
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show]
+  before_action :find_song, :find_artist, only: [:show]
 
   def show
     puts "No song here" if @song == nil
-    # @song.get_chords_from_api(@song.sticky_tabs)
+    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
     # raise
+
   end
 
   def new
@@ -28,7 +31,7 @@ class SongsController < ApplicationController
       @song.sticky_tabs = @chords
 
       if @song.save
-        redirect_to artist_song_path(@song.artist_id, @song.id)
+        redirect_to song_path(@song.id)
       else
         @error = "did not successfully save, please try again."
         @post_path = new_song_path
@@ -37,7 +40,7 @@ class SongsController < ApplicationController
       end
     else
       existing_song = Song.find_by(website: @song.website)
-      redirect_to artist_song_path( existing_song.artist.id, existing_song.id )
+      redirect_to song_path( existing_song.id )
     end
   end
 
@@ -55,8 +58,8 @@ class SongsController < ApplicationController
   end
 
   def find_artist
-    if Artist.exists?(params[:artist_id].to_i)
-      return @artist = Artist.find(params[:artist_id].to_i)
+    if Artist.exists?(@song.artist_id)
+      return @artist = Artist.find(@song.artist_id)
     else
       @artist = Artist.new
     end
