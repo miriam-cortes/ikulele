@@ -19,14 +19,16 @@ class Song < ActiveRecord::Base
           if element.text.include?("  ")
             @song_tab_string += element.text.gsub("  ", " .")
           else
-            @song_tab_string += element.text
+            @song_tab_string += ("|" + element.text + "|")
+            next
           end
         elsif element.name == "a"
           @song_tab_string += element.children.text
-        else
-          @song_tab_string += element.name
+          next
+        # else
+        #   @song_tab_string += element.name
         end
-        @song_tab_string += "|"
+        # @song_tab_string += "|"
       end
     else
       @song_tab_string += "sorry, details about this tab are not available."
@@ -58,7 +60,23 @@ class Song < ActiveRecord::Base
   end
 
   def set_name_and_type(chord)
-    if chord[1] == "b" || chord[1] == "#"
+    # change those sharp chords to flats bc my API don't like em
+    if chord[1] == "#"
+      case chord[0]
+      when "C"
+        chord[0..1] = "Db"
+      when "D"
+        chord[0..1] = "Eb"
+      when "F"
+        chord[0..1] = "Gb"
+      when "G"
+        chord[0..1] = "Ab"
+      when "A"
+        chord[0..1] = "Bb"
+      end
+    end
+    # assign flat chord names/types
+    if chord[1] == "b"
       chord_name = chord[0..1]
       if chord.length == 2
         type = "major"
@@ -73,7 +91,7 @@ class Song < ActiveRecord::Base
         type = "major"
       elsif chord.length == 2 && chord[1] == "m"
         type = "minor"
-      elsif chord.length == 2
+      else
         type = chord[1..-1]
       end
     end

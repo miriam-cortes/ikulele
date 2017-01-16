@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homepages#index'
 
-  resources :artists do
-    resources :songs
-  end
-
+  resources :artists
   resources :songs
 
   get 'homepages/index'

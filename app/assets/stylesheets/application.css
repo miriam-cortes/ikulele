@@ -119,21 +119,12 @@ li.dropdown {
    font-size: 1.2rem;
    overflow: scroll;
    height: 70vh;
-   margin-bottom: 5%;
+   padding: 0;
  }
 
 .chords {
   float: right;
   display: block;
-}
-.chord {
-  width: 100%;
-}
-
-.chords-div {
-  /*position: absolute;*/
-  float: right;
-  display: inline;
 }
 
 @media screen and (max-width: 768em) {
