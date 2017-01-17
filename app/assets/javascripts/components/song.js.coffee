@@ -9,20 +9,24 @@
     song: ""
     artist: ""
     my_favorite: ""
+  handleFavorite: ->
+    console.log("current_favorite: " + @state.my_favorite)
+    if @state.my_favorite == "❤️"
+      $.ajax
+        method: 'DELETE'
+      @state.my_favorite == "♡"
+      # FavoriteSong.find(user_id: current_user.id, song_id: @state.song.id).delete
+      console.log("trying to delete favorite")
+    if @state.my_favorite == "♡"
+      console.log("trying to save favorite")
   render: ->
     React.DOM.div
       className: 'song_holder'
       React.DOM.h3
-        className: 'small-1 columns favorite'
+        className: 'small-1 columns favorite centered'
         id: 'favorite'
+        onClick: @handleFavorite
         @state.my_favorite
-        # if ( @state.favorite == null ) {
-        #   "♡"
-        # } else {
-        #   "❤️"
-        # }
-        # this.clickHandler = -> alert "clicked"
-        # element.addEventListener "click", (e) => this.clickHandler(e)
       React.DOM.h2
         className: 'cursive-font small-6 columns'
         @state.song.name
@@ -36,6 +40,6 @@
         className: 'chords small-4 large-4 columns'
         for i in @state.song.sticky_tabs.split(" ")
           React.DOM.img
-            className: 'small-6 large-4 columns'
+            className: 'small-6 large-4 columns '
             id: i
             src: i
