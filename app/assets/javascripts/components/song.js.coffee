@@ -6,6 +6,10 @@ $(document).on "click", "#play", ->
   console.log("scrolling!!")
   pageScroll()
 
+$(document).on "click", "#stop", ->
+  console.log("stop!!")
+  $('.tabs').stop()
+
 
 @Song = React.createClass
   getInitialState: ->
@@ -33,6 +37,10 @@ $(document).on "click", "#play", ->
         className: 'small-1 columns skinny-font'
         id: 'play'
         "play!"
+      React.DOM.h3
+        className: 'small-1 columns skinny-font'
+        id: 'stop'
+        "stop!"
       React.DOM.h2
         className: 'tabs small-8 large-8 columns'
         for i in @state.song.lyrics_tabs.split("|")
