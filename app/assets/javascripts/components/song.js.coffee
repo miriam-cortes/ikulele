@@ -1,13 +1,13 @@
 # # app/assets/javascripts/components/song.js.coffee
-pageScroll = () ->
-  $('.tabs').animate({scrollTop: 10000000}, 600000000, "linear")
+pageScroll = ->
+  divHeight = $('.tabs')[0].scrollHeight
+  $('.tabs').animate({scrollTop: divHeight }, divHeight * 100, "linear")
+  console.log("height: " + divHeight)
 
 $(document).on "click", "#play", ->
-  console.log("scrolling!!")
   pageScroll()
 
 $(document).on "click", "#stop", ->
-  console.log("stop!!")
   $('.tabs').stop()
 
 
@@ -26,10 +26,10 @@ $(document).on "click", "#stop", ->
         className: 'small-1 columns favorite centered'
         id: 'favorite'
         @state.my_favorite
-        if @state.my_favorite == " ❤️"
-          console.log("It's a favorite")
-        else
-          console.log("Not a favorite")
+        # if @state.my_favorite == " ❤️"
+        #   console.log("It's a favorite")
+        # else
+        #   console.log("Not a favorite")
       React.DOM.h2
         className: 'cursive-font small-6 columns'
         @state.song.name
