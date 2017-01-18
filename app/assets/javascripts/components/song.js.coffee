@@ -1,6 +1,6 @@
 # # app/assets/javascripts/components/song.js.coffee
 pageScroll = () ->
-  $('.tabs').animate({scrollTop: 10000000}, 10000000)
+  $('.tabs').animate({scrollTop: 10000000}, 600000000, "linear")
 
 $(document).on "click", "#play", ->
   console.log("scrolling!!")
