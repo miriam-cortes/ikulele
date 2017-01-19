@@ -11,7 +11,6 @@
 
 <body>
   <header class="fixed row">
-    <%= image_tag('/assets/uke_logo.png', alt: "ikulele logo", class: "small-12 columns homepage-image") %>
     <nav class="small-12 columns">
       <li class="large-3 small-6 columns header-font"><%= link_to "Home", root_path %></li>
       <li class="large-3 small-6 columns header-font"><%= link_to "All Songs", songs_path %></li>
@@ -32,11 +31,8 @@
       </li>
       <div class="small-12 columns search-form">
         <%= form_tag( searchresults_path, :method => "get" ) do %>
-          <div class="small-9 columns">
+          <div class="small-12 columns">
             <%= text_field_tag :search, params[:search], placeholder: 'Search' %>
-          </div>
-          <div class="small-2 columns">
-            <%= submit_tag "Search", class: "button cursive-font" %>
           </div>
         <% end %>
       </div>
