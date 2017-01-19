@@ -27,6 +27,18 @@ $(document).on "click", "#stop", ->
   $('.tabs').stop()
 
 
+
+
+
+# $(document).on "click", "#favorite", ->
+#   console.log("You did the thing!")
+#   console.log($('.hidden').text())
+#   # console.log(song)
+#   # look for the object or send the data in there
+#   # coffeescript ajax post***** <look that up first thing tomorrow
+#   request = $.post "sessions/favorites/#{this.song.id}"
+
+
 @Song = React.createClass
   getInitialState: ->
     song: @props.songData
@@ -42,12 +54,9 @@ $(document).on "click", "#stop", ->
         className: 'small-1 columns favorite centered'
         id: 'favorite'
         @state.my_favorite
-        # if @state.my_favorite == " ❤️"
-        #   console.log("It's a favorite")
-        # else
-        #   console.log("Not a favorite")
       React.DOM.h2
         className: 'cursive-font small-7 columns'
+        id: 'song_name'
         @state.song.name
       React.DOM.h3
         className: 'small-1 columns skinny-font'
@@ -78,3 +87,6 @@ $(document).on "click", "#stop", ->
             className: 'small-6 large-4 columns '
             id: i
             src: i
+      React.DOM.p
+        className: 'hidden'
+        @state.song.id

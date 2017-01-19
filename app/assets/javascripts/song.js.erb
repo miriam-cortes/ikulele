@@ -1,0 +1,12 @@
+//= require_tree ./components
+
+$(document).on('click', '#favorite', function(e) {
+  $.ajax({
+    url: "/sessions/favorites",
+    type: "POST",
+    data: {},
+    success: function(data){
+      alert("success!");
+    }
+  });
+});

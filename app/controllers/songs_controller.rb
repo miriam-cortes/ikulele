@@ -9,7 +9,6 @@ class SongsController < ApplicationController
     # @my_favorite = FavoriteSong.all
     @my_favorite = is_favorite(@song)
     # raise
-
   end
 
   def new
@@ -47,7 +46,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.all.order(:name)
   end
 
   private
@@ -69,10 +68,9 @@ class SongsController < ApplicationController
 
   def is_favorite(song)
     if FavoriteSong.where(user_id: current_user.id, song_id: @song.id).length == 1
-    # if ( @favorites_array ).length == 1
-      return " ❤️"
+      return "❤️"
     else
-      return " ♡"
+      return "♡"
     end
   end
 
