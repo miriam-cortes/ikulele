@@ -58,6 +58,7 @@ a:hover {
    position: absolute;
    text-align: center;
    padding: 1%;
+   background-color: white;
    /*margin: 1%;*/
  }
 
@@ -78,6 +79,7 @@ li.dropdown {
  }
 
  .search-form {
+   margin-top: 1%;
    position: static;
  }
 
