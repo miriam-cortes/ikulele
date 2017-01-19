@@ -4,7 +4,7 @@ $(document).on('click', '#favorite', function(e) {
   $.ajax({
     url: "/sessions/favorites",
     type: "POST",
-    data: {},
+    data: {"song_id": $('.hidden').text() },
     success: function(data){
       alert("success!");
     }
