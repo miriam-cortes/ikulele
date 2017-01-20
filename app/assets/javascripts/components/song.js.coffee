@@ -50,7 +50,7 @@ $(document).on "click", "#stop", ->
     React.DOM.div
       className: 'song_holder'
       React.DOM.h3
-        className: 'small-1 columns favorite centered'
+        className: 'small-1 columns favorite centered clickable'
         id: 'favorite'
         onClick: this.handleFavorite
         @state.my_favorite
@@ -59,19 +59,19 @@ $(document).on "click", "#stop", ->
         id: 'song_name'
         @state.song.name
       React.DOM.h3
-        className: 'small-1 columns skinny-font'
+        className: 'small-1 columns skinny-font clickable'
         id: 'play'
         "play!"
       React.DOM.h3
-        className: 'small-1 columns skinny-font'
+        className: 'small-1 columns skinny-font clickable'
         id: 'stop'
         "stop!"
       React.DOM.h3
-        className: 'small-1 columns skinny-font'
+        className: 'small-1 columns skinny-font clickable'
         id: 'faster'
         "faster"
       React.DOM.h3
-        className: 'small-1 columns skinny-font'
+        className: 'small-1 columns skinny-font clickable'
         id: 'slower'
         "slower"
       React.DOM.h2
