@@ -54,7 +54,7 @@ $(document).on "click", "#stop", ->
         id: 'favorite'
         onClick: this.handleFavorite
         @state.my_favorite
-      React.DOM.h2
+      React.DOM.h3
         className: 'cursive-font small-7 columns'
         id: 'song_name'
         @state.song.name

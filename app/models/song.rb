@@ -53,6 +53,7 @@ class Song < ActiveRecord::Base
       url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord_name}" + "&typ=#{type}"
       response = HTTParty.get(url)
       mini_chord_pic_url = response.parsed_response["uc"]["chord"][0]["chord_diag_mini"]
+      mini_chord_pic_url = " " if mini_chord_pic_url == nil
       @chords_array.push(mini_chord_pic_url)
     end
 
