@@ -56,6 +56,10 @@ a:hover {
    /*margin: 1%;*/
  }
 
+ .clickable {
+   cursor: pointer;
+ }
+
  .dropdown-content a {
    text-decoration: none;
    display: block;
