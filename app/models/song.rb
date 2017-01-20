@@ -95,8 +95,6 @@ class Song < ActiveRecord::Base
         type = chord[1..-1]
       end
     end
-    # raise
-
 
     return chord_name, type
   end
