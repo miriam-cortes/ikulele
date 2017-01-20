@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # get 'homepages/random'
   # get 'homepages/chord_bank'
 
-  get 'homepages/:user_id/favorites' => 'homepages#favorites', as: 'favorites'
+  get 'homepages/favorites' => 'homepages#favorites', as: 'favorites'
+  post 'sessions/favorites' => 'sessions#handle_favorite', as: 'handle_favorite'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

@@ -8,6 +8,7 @@ gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'react-rails', '~> 1.0'
 gem 'libxml-ruby'
+gem 'responders', '~> 2.0'
 
 #foundation
 gem 'foundation-rails'

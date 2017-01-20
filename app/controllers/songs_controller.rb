@@ -4,12 +4,14 @@ class SongsController < ApplicationController
   before_action :find_song, :find_artist, only: [:show]
 
   def show
-    puts "No song here" if @song == nil
-    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
-    # @my_favorite = FavoriteSong.all
-    @my_favorite = is_favorite(@song)
-    # raise
-
+    if @song == nil
+      render status: 404
+    else
+      @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+      # @my_favorite = FavoriteSong.all
+      @my_favorite = is_favorite(@song)
+      # raise
+    end
   end
 
   def new
@@ -47,7 +49,7 @@ class SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.all.order(:name)
   end
 
   private
@@ -69,10 +71,9 @@ class SongsController < ApplicationController
 
   def is_favorite(song)
     if FavoriteSong.where(user_id: current_user.id, song_id: @song.id).length == 1
-    # if ( @favorites_array ).length == 1
-      return " ❤️"
+      return "❤️"
     else
-      return " ♡"
+      return "♡"
     end
   end
 

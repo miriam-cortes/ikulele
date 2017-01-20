@@ -1,7 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
-    # raise
+    @artists = Artist.all.order(:name)
   end
 
   def show
@@ -41,15 +40,6 @@ class ArtistsController < ApplicationController
   end
 
   private
-  # def artist
-  #   params.require(:artist).permit(:name)
-  #   @artist = Artist.find_by(name: params[])
-  #   if @artist.nil?
-  #     @artist = Artist.(auth_hash)
-  #     flash[:notice] = "Unable to save the Merchant"
-  #     return redirect_to root_path unless @merchant.save
-  #   end
-  # end
 
   def find_artist
     if Artist.exists?(params[:id].to_i)
