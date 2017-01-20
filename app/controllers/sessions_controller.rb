@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def handle_favorite()
+    return "♡" if session[:user_id] == nil
     if params["favorite_status"] == "♡"
       @favorite = FavoriteSong.new
       @favorite.user_id = session[:user_id]

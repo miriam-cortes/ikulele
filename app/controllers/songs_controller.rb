@@ -4,13 +4,12 @@ class SongsController < ApplicationController
   before_action :find_song, :find_artist, only: [:show]
 
   def show
-    if @song == nil
-      render status: 404
+    render status: 404 if @song == nil
+    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+    if session[:user_id] == nil
+      @my_favorite = "♡"
     else
-      @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
-      # @my_favorite = FavoriteSong.all
       @my_favorite = is_favorite(@song)
-      # raise
     end
   end
 
