@@ -27,18 +27,6 @@ $(document).on "click", "#stop", ->
   $('.tabs').stop()
 
 
-
-
-
-# $(document).on "click", "#favorite", ->
-#   console.log("You did the thing!")
-#   console.log($('.hidden').text())
-#   # console.log(song)
-#   # look for the object or send the data in there
-#   # coffeescript ajax post***** <look that up first thing tomorrow
-#   request = $.post "sessions/favorites/#{this.song.id}"
-
-
 @Song = React.createClass
   getInitialState: ->
     song: @props.songData
@@ -47,12 +35,24 @@ $(document).on "click", "#stop", ->
     song: ""
     artist: ""
     my_favorite: ""
+  handleFavorite: ->
+    $.ajax(
+      url: "/sessions/favorites"
+      type: "POST"
+      data: {"song_id": $('.hidden').text(), "favorite_status": $('#favorite').text() }
+      success: =>
+        if this.state.my_favorite == '❤️'
+          this.setState({my_favorite: '♡'})
+        else
+          this.setState({my_favorite: '❤️'})
+    )
   render: ->
     React.DOM.div
       className: 'song_holder'
       React.DOM.h3
         className: 'small-1 columns favorite centered'
         id: 'favorite'
+        onClick: this.handleFavorite
         @state.my_favorite
       React.DOM.h2
         className: 'cursive-font small-7 columns'

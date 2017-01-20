@@ -4,11 +4,14 @@ class SongsController < ApplicationController
   before_action :find_song, :find_artist, only: [:show]
 
   def show
-    puts "No song here" if @song == nil
-    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
-    # @my_favorite = FavoriteSong.all
-    @my_favorite = is_favorite(@song)
-    # raise
+    if @song == nil
+      render status: 404
+    else
+      @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+      # @my_favorite = FavoriteSong.all
+      @my_favorite = is_favorite(@song)
+      # raise
+    end
   end
 
   def new
