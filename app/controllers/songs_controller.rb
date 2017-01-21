@@ -5,7 +5,9 @@ class SongsController < ApplicationController
 
   def show
     render status: 404 if @song == nil
-    @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+    # puts Time.now
+    # @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
+    # puts Time.now
     if session[:user_id] == nil
       @my_favorite = "♡"
     else
@@ -31,7 +33,8 @@ class SongsController < ApplicationController
       @song.artist_id = Artist.find_by(name: @header_array[1]).id
       @song.lyrics_tabs = @song_tab_string
       @song.key = @chords.split(",").first
-      @song.sticky_tabs = @chords
+      @song.sticky_tabs = @song.get_chords_from_api(@chords)
+
 
       if @song.save
         redirect_to song_path(@song.id)
