@@ -2,13 +2,13 @@
 @import url('foundation_and_overrides.scss');
 @import url('_settings.scss');
 
-a {
+a, a:visited {
   color: #FF0022;
 }
 a:hover {
   color: black;
 }
-a:visited, a:active {
+a:active {
   color: #FF0022;
 }
 
