@@ -8,6 +8,9 @@ a {
 a:hover {
   color: black;
 }
+a:visited, a:active {
+  color: #FF0022;
+}
 
  .footer-font {
    font-family: 'Open Sans Condensed', sans-serif;

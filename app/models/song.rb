@@ -7,7 +7,11 @@ class Song < ActiveRecord::Base
   UKE_API_KEY = ENV["UKE_CHORDS_API_KEY"]
 
   def scrape_song(website)
-    @page = HTTParty.get(website)
+    @page = HTTParty.get(website,
+      headers: {
+        'Cookie' => "__gads=ID=9076f852be57ecff:T=1477191925:S=ALNI_MZWYZcJNvsGTj85A7gFOZnoUO2HDg; __qca=P0-1944085700-1477191934000; position=1; userid=B5D0E0F3-7045-FB5C-25FB-9AD2062B43BE; OX_plg=swf|shk|pm; PHPSESSID=4492f7472b9af824196c58ca6da83cd8; scrollTop=0; cid=444; _ga=GA1.2.296721480.1477191925; __utmt=1; OX_sd=2; __utma=58811561.296721480.1477191925.1484947167.1484954896.58; __utmb=58811561.8.10.1484954897; __utmc=58811561; __utmz=58811561.1480827346.6.3.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)"
+      }
+    )
     @parse_page = Nokogiri::HTML(@page)
     @header_array = @parse_page.css('h2').text.split(" Uke tab by ")
     @song_tab_string = ""
@@ -39,8 +43,8 @@ class Song < ActiveRecord::Base
     (@parse_page.css('div#sticky_crd img')).each do |chord|
         @chords += chord['src'][25...-4] + ","
     end
-    @chords.gsub!("_","#")
 
+    @chords.gsub!("_","#")
     return @chords, @song_tab_string, @header_array
   end
 
