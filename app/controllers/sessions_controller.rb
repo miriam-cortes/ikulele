@@ -18,12 +18,11 @@ class SessionsController < ApplicationController
       @favorite = FavoriteSong.new
       @favorite.user_id = session[:user_id]
       @favorite.song_id = params["song_id"]
-      @favorite.save!
+      @favorite.save
     else
       FavoriteSong.where(user_id: session[:user_id], song_id: params["song_id"])[0].delete
     end
     render json: {ok: true}
-    # render song_path(params["song_id"])
   end
 
 end
