@@ -21,7 +21,7 @@
         <% if current_user %>
           <a class="dropbtn">Hi, <%= current_user.name %>!</a>
           <div class="dropdown-content">
-            <%= link_to "Favorites", favorites_path %>
+            <%= link_to "Favorites", favorites_path(session[:user_id]) %>
             <%= link_to "New song", new_song_path %>
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
           </div>

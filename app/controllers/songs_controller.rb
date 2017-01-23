@@ -5,9 +5,6 @@ class SongsController < ApplicationController
 
   def show
     render status: 404 if @song == nil
-    # puts Time.now
-    # @song.sticky_tabs = @song.get_chords_from_api(@song.sticky_tabs)
-    # puts Time.now
     if session[:user_id] == nil
       @my_favorite = "♡"
     else

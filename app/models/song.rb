@@ -28,9 +28,8 @@ class Song < ActiveRecord::Base
           end
         elsif element.name == "a"
           if element.children.text.include?("#")
-            # binding.pry
-
             @song_tab_string += change_sharp_to_flat( element.children.text ) + element.children.text[2..-1]
+            next
           else
             @song_tab_string += element.children.text
             next
@@ -47,7 +46,7 @@ class Song < ActiveRecord::Base
         @chords += chord['src'][25...-4] + ","
     end
 
-    @chords.gsub!("_","#")
+    @chords.gsub!("_","#") #quiestionable as to whether I need this anymore
     return @chords, @song_tab_string, @header_array
   end
 
@@ -56,7 +55,6 @@ class Song < ActiveRecord::Base
 
     sticky_tabs.split(",").each do |chord|
       chord_name, type = self.set_name_and_type(chord)
-
       url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord_name}" + "&typ=#{type}"
       response = HTTParty.get(url)
       mini_chord_pic_url = response.parsed_response["uc"]["chord"][0]["chord_diag_mini"]
