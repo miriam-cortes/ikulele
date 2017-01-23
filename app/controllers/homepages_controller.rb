@@ -28,6 +28,8 @@ class HomepagesController < ApplicationController
   end
 
   def favorites
+    # @current_user = User.find(2)
+    puts "THE CURRENT USER IS >>>>>>>>>>>>>>>>" + current_user.id.to_s
     return @favorites = FavoriteSong.where(user_id: current_user.id)
   end
 end
