@@ -27,12 +27,15 @@ class Song < ActiveRecord::Base
             next
           end
         elsif element.name == "a"
-          @song_tab_string += element.children.text
-          next
-        # else
-        #   @song_tab_string += element.name
+          if element.children.text.include?("#")
+            # binding.pry
+
+            @song_tab_string += change_sharp_to_flat( element.children.text ) + element.children.text[2..-1]
+          else
+            @song_tab_string += element.children.text
+            next
+          end
         end
-        # @song_tab_string += "|"
       end
     else
       @song_tab_string += "sorry, details about this tab are not available."
@@ -67,18 +70,7 @@ class Song < ActiveRecord::Base
   def set_name_and_type(chord)
     # change those sharp chords to flats bc my API don't like em
     if chord[1] == "#"
-      case chord[0]
-      when "C"
-        chord[0..1] = "Db"
-      when "D"
-        chord[0..1] = "Eb"
-      when "F"
-        chord[0..1] = "Gb"
-      when "G"
-        chord[0..1] = "Ab"
-      when "A"
-        chord[0..1] = "Bb"
-      end
+      chord[0..1] = self.change_sharp_to_flat(chord[0..1])
     end
     # assign flat chord names/types
     if chord[1] == "b"
@@ -102,6 +94,22 @@ class Song < ActiveRecord::Base
     end
 
     return chord_name, type
+  end
+
+
+  def change_sharp_to_flat(chord)
+    case chord[0]
+    when "C"
+      return "Db"
+    when "D"
+      return "Eb"
+    when "F"
+      return "Gb"
+    when "G"
+      return "Ab"
+    when "A"
+      return "Bb"
+    end
   end
 
 end
