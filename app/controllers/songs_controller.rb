@@ -76,11 +76,4 @@ class SongsController < ApplicationController
     end
   end
 
-
-  ##### NOTHING REFERS TO THIS METHOD #####
-
-  def song_params
-    params.require(:song).permit(:website)
-  end
-
 end
