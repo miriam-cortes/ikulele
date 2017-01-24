@@ -12,12 +12,12 @@
 <body>
   <header class="fixed row">
     <nav class="small-12 columns">
-      <li class="large-3 small-6 columns header-font"><%= link_to "Home", root_path %></li>
-      <li class="large-3 small-6 columns header-font"><%= link_to "All Songs", songs_path %></li>
-      <li class="large-3 small-6 columns header-font"><%= link_to "All Artists", artists_path %></li>
+      <li class="large-3 small-3 columns header-font"><%= link_to "Home", root_path %></li>
+      <li class="large-3 small-3 columns header-font"><%= link_to "All Songs", songs_path %></li>
+      <li class="large-3 small-3 columns header-font"><%= link_to "All Artists", artists_path %></li>
 
       <!-- LOGIN DROP DOWN -->
-      <li class="header-font dropdown large-3 small-6 columns">
+      <li class="header-font dropdown large-3 small-3 columns">
         <% if current_user %>
           <a class="dropbtn">Hi, <%= current_user.name %>!</a>
           <div class="dropdown-content">
