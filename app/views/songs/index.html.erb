@@ -2,6 +2,6 @@
 
 <div class="small-12 columns">
   <% @songs.each do |song| %>
-    <h4 class="cursive-font"><%= link_to (song.name + " | " + song.artist.name), song_path( song.id ) %></h4>
+    <h4 class="cursive-font"><%= link_to song.name, song_path( song.id ) %> | <%= link_to song.artist.name, artist_path(song.artist.id) %></h4>
   <% end %>
 </div>
