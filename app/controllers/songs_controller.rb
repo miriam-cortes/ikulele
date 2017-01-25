@@ -1,10 +1,10 @@
 ### app/controllers/songs_controller.rb ###
 
 class SongsController < ApplicationController
-  before_action :find_song, :find_artist, only: [:show]
-
+  
   def show
-    render status: 404 if @song == nil
+    render(status: 404) if @song == nil
+    find_song
     if session[:user_id] == nil
       @my_favorite = "♡"
     else
@@ -59,9 +59,13 @@ class SongsController < ApplicationController
   private
   def find_song
     if Song.exists?(params[:id].to_i)
-      return @song = Song.find_by(id: params[:id].to_i)
+      find_artist
+      @song = Song.find_by(id: params[:id].to_i)
+      # return
     else
-      render :status => 404
+      @song = nil
+      @artist = nil
+      render(:status => 404)
     end
   end
 

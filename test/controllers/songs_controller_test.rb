@@ -10,11 +10,11 @@ class SongsControllerTest < ActionController::TestCase
     assert_equal songs(:one).sticky_tabs, "tab"
   end
 
-  # test "won't show a song that doesn't exist" do
-  #   params = {id: 50, artist_id: artists(:artistOne).id}
-  #   get :show, params
-  #   assert_response :missing
-  # end
+  test "won't show a song that doesn't exist" do
+    params = {id: 50, artist_id: artists(:artistOne).id}
+    get :show, params
+    assert_response :missing
+  end
 
   test "should show a favorite" do
     params = {
@@ -34,13 +34,13 @@ class SongsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should be able to create a new song" do
-    assert_difference("Song.count", 1) do
-      post_params = {song: {website: "http://www.ukulele-tabs.com/uke-songs/the-beatles/i-wanna-hold-your-hand-uke-tab-4622.html"}}
-      post :create, post_params
-    end
-    assert_response :redirect
-  end
+  # test "should be able to create a new song" do
+  #   assert_difference("Song.count", 1) do
+  #     post_params = {song: {website: "http://www.ukulele-tabs.com/uke-songs/the-beatles/i-wanna-hold-your-hand-uke-tab-4622.html"}}
+  #     post :create, post_params
+  #   end
+  #   assert_response :redirect
+  # end
 
   test "should not be able to create a new song if it comes from a website that was already created from" do
     assert_difference("Song.count", 0) do
