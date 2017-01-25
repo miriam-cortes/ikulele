@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  artist: MyString
-  lyrics_tabs: MyString
-  key: MyString
-  sticky_tabs: MyString
+  artist: artistOne
+  lyrics_tabs: "one two three"
+  key: "key"
+  sticky_tabs: "tab"
+  website: "www.ukulele-tabs.com"
 
 two:
-  artist: MyString
-  lyrics_tabs: MyString
-  key: MyString
-  sticky_tabs: MyString
+  artist: artistTwo
+  lyrics_tabs: "one two three"
+  key: "key key"
+  sticky_tabs: "tab tab"

@@ -1,7 +1,4 @@
 class HomepagesController < ApplicationController
-  def index
-  end
-
   def search_results
     @search_term = params["search"]
     # raise
@@ -11,23 +8,13 @@ class HomepagesController < ApplicationController
     return @search_term, @song_search_results, @artist_search_results
   end
 
-  def song
-
-  end
-
-  def artist
-  end
-
-  def album
-  end
-
-  def random
-  end
-
-  def chord_bank
-  end
+  # def random
+  # end
+  #
+  # def chord_bank
+  # end
 
   def favorites
-    return @favorites = FavoriteSong.where(user_id: current_user.id)
+    return @favorites = FavoriteSong.where(user_id: current_user.id).order(:name)
   end
 end
