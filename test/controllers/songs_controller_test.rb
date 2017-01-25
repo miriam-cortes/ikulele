@@ -10,8 +10,17 @@ class SongsControllerTest < ActionController::TestCase
     assert_equal songs(:one).sticky_tabs, "tab"
   end
 
+  # test "won't show a song that doesn't exist" do
+  #   params = {id: 50, artist_id: artists(:artistOne).id}
+  #   get :show, params
+  #   assert_response :missing
+  # end
+
   test "should show a favorite" do
-    params = {id: songs(:one).id, session: {user_id: users(:one).id}}
+    params = {
+      id: songs(:one).id,
+      session: {user_id: users(:one).id}
+    }
     get :show, params
   end
 

@@ -4,7 +4,8 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    find_artist
+    @artist = find_artist
+    @songs = Song.where(artist_id: @artist.id).order(:name)
   end
 
   def new
@@ -25,18 +26,9 @@ class ArtistsController < ApplicationController
 
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
-  def show_artist_songs
+  def show_artist_songs # DOES ANYTHING POINT TO THIS???
     find_artist
-    @songs = Song.find_by(artist_id: @artist.id)
+    @songs = Song.find_by(artist_id: @artist.id).order(:name)
   end
 
   private

@@ -2,7 +2,7 @@
 
 
 <div class="small-12 columns">
-  <% @artist.songs.each do |song| %>
+  <% @songs.each do |song| %>
     <h4 class="skinny-font"><%= link_to song.name, song_path( song.id) %></h4>
   <% end %>
 </div>
