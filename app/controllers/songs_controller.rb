@@ -20,7 +20,12 @@ class SongsController < ApplicationController
   def create
     @song = Song.new
     @song.website = params["song"]["website"]
-    if Song.where(website: @song.website).length == 0
+    if !( @song.website.include?("ukulele-tabs.com"))
+      @error = "Sorry, at this moment we can only convert tabs from ukulele-tabs.com."
+      @post_path = new_song_path
+      @post_method = :post
+      redirect_to new_song_path
+    elsif Song.where(website: @song.website).length == 0
       @chords, @song_tab_string, @header_array = @song.scrape_song(params["song"]["website"])
 
       @song.name = @header_array[0]
