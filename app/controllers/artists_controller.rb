@@ -13,23 +13,21 @@ class ArtistsController < ApplicationController
     @path = artists_path
   end
 
-  def create
+  # def create
+  #   if @artist.save
+  #     redirect_to artist_path(@artist.id)
+  #   else
+  #     @error = "Did not save successfully. Please try again."
+  #     @post_path = artist_path
+  #     @post_method = :post
+  #     render :new
+  #   end
+  # end
 
-    if @artist.save
-      redirect_to artist_path(@artist.id)
-    else
-      @error = "Did not save successfully. Please try again."
-      @post_path = artist_path
-      @post_method = :post
-      render :new
-    end
-
-  end
-
-  def show_artist_songs # DOES ANYTHING POINT TO THIS???
-    find_artist
-    @songs = Song.find_by(artist_id: @artist.id).order(:name)
-  end
+  # def show_artist_songs # DOES ANYTHING POINT TO THIS???
+  #   find_artist
+  #   @songs = Song.find_by(artist_id: @artist.id).order(:name)
+  # end
 
   private
 
