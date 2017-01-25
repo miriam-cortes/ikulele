@@ -15,6 +15,6 @@ class HomepagesController < ApplicationController
   # end
 
   def favorites
-    return @favorites = FavoriteSong.joins(:song).merge(FavoriteSong.where(user_id: current_user.id))
+    return @favorites = FavoriteSong.select('songs.name').joins(:song).where('favorite_songs.user_id' => current_user.id).order('songs.name')
   end
 end
