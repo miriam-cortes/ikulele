@@ -2,6 +2,6 @@
 
 <div class="small-12 columns">
   <% @favorites.each do |favorite| %>
-    <h4 class="cursive-font"><%= link_to( Song.find(favorite.song_id).name, song_path(favorite.song_id) ) %></h4>
+    <h4 class="cursive-font"><%= link_to( favorite.song.name, song_path(favorite.song.id) ) %></h4>
   <% end %>
 </div>

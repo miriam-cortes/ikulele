@@ -1,10 +1,10 @@
 ### app/controllers/songs_controller.rb ###
 
 class SongsController < ApplicationController
-  before_action :find_song, only: [:show]
-
+  
   def show
-    render status: 404 if @song == nil
+    render(status: 404) if @song == nil
+    find_song
     if session[:user_id] == nil
       @my_favorite = "♡"
     else
@@ -64,7 +64,8 @@ class SongsController < ApplicationController
       # return
     else
       @song = nil
-      render :status => 404
+      @artist = nil
+      render(:status => 404)
     end
   end
 
