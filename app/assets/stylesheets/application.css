@@ -161,7 +161,7 @@ li.dropdown {
 
 @media screen and (min-device-width: 481px) and (orientation:portrait) {
   main {
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
   }
 }
 
