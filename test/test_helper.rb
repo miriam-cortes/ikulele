@@ -20,8 +20,8 @@ class ActiveSupport::TestCase
     # hashes to return during testing.
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
       provider: 'facebook',
-      uid: '123545',
-      info: { email: "a@b.com", name: "Ada" }
+      uid: '12345',
+      name: "Ada" 
     })
   end
 

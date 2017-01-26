@@ -86,13 +86,6 @@ li.dropdown {
    position: static;
  }
 
-@media screen and (min-width: 64em) {
-  main {
-   margin-top: 7vh;
-   margin-bottom: 6vh;
-   display: block;
-  }
-}
 
  footer {
   display: block;
@@ -142,12 +135,37 @@ li.dropdown {
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+.hidden {
+  display: none;
+}
+
+/* SMALL SCREENS, PORTRAIT */
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
   main {
-    margin-top: 2vh;
+    margin-top: 0vh;
+    margin-bottom: 6vh;
+    display: block;
   }
 }
 
-.hidden {
-  display: none;
+/* SMALL SCREENS, LANDSCAPE */
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+  main {
+    margin-top: 14vh;
+    margin-bottom: 3vh;
+  }
+  footer {
+    height: 4vh;
+  }
+}
+
+/* iPAD, LANDSCAPE */
+@media screen and (min-device-width: 481px) and (orientation:landscape) {
+  main {
+    margin-top: 10vh;
+    margin-bottom: 4vh;
+  }
+  footer {
+    height: 4vh;
+  }
 }

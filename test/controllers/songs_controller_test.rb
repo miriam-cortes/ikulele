@@ -34,13 +34,13 @@ class SongsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should be able to create a new song" do
-  #   assert_difference("Song.count", 1) do
-  #     post_params = {song: {website: "http://www.ukulele-tabs.com/uke-songs/the-beatles/i-wanna-hold-your-hand-uke-tab-4622.html"}}
-  #     post :create, post_params
-  #   end
-  #   assert_response :redirect
-  # end
+  test "should be able to create a new song" do
+    assert_difference("Song.count", 1) do
+      post_params = {song: {website: "http://www.ukulele-tabs.com/uke-songs/sam-smith/stay-with-me-uke-tab-39708.html?steps=+1"}}
+      post :create, post_params
+    end
+    assert_response :redirect
+  end
 
   test "should not be able to create a new song if it comes from a website that was already created from" do
     assert_difference("Song.count", 0) do
