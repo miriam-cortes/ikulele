@@ -84,7 +84,7 @@ $(document).on "click", "#stop", ->
         className: 'chords small-4 large-4 columns'
         for i in @state.song.sticky_tabs.split(" ")
           React.DOM.img
-            className: 'small-6 large-4 columns '
+            className: 'small-6 medium-4 large-4 columns '
             id: i
             src: i
       React.DOM.p

@@ -142,12 +142,22 @@ li.dropdown {
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   main {
     margin-top: 2vh;
+    margin-bottom: 2vh;
   }
 }
 
 .hidden {
   display: none;
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+  main {
+    margin-top: 14vh;
+  }
+  footer {
+    height: 4vh;
+  }
 }
