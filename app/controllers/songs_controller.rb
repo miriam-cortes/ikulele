@@ -69,7 +69,7 @@ class SongsController < ApplicationController
     if Artist.exists?(@song.artist_id)
       return @artist = Artist.find(@song.artist_id)
     else
-      @artist = Artist.new
+      render :status => 404
     end
   end
 

@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  def login_a_user
-    auth = OmniAuth.config.mock_auth[:facebook]
-    puts "#{auth.uid}"
-    get :create,  {uid: '12345'}
-  end
+  # def login_a_user
+  #   auth = OmniAuth.config.mock_auth[:facebook]
+  #   puts "#{auth.uid}"
+  #   get :create,  {uid: '12345'}
+  # end
   #
   # test "Can Create a user" do
   #   assert_difference('User.count', 1) do
