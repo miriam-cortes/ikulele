@@ -16,14 +16,6 @@ class SongsControllerTest < ActionController::TestCase
     assert_response :missing
   end
 
-  test "should show a favorite" do
-    params = {
-      id: songs(:one).id,
-      session: {user_id: users(:one).id}
-    }
-    get :show, params
-  end
-
   test "should get new" do
     get :new
     assert_response :success
