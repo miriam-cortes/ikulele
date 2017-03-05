@@ -1,7 +1,7 @@
 ### app/controllers/songs_controller.rb ###
 
 class SongsController < ApplicationController
-  before_action :find_song, :find_artist, only: [:show]
+  before_action :find_song, :find_artist, only: [:show, :update, :edit]
 
   def show
     render status: 404 if @song == nil
@@ -54,6 +54,13 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.all.order(:name)
+  end
+
+  def edit
+  end
+
+  def update
+
   end
 
   private
