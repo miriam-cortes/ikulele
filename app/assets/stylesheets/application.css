@@ -159,10 +159,15 @@ li.dropdown {
   }
 }
 
+/* iPAD, PORTRAIT */
 @media screen and (min-device-width: 481px) and (orientation:portrait) {
   main {
     margin-bottom: 4vh;
   }
+  li a {
+    /*font-size: 2rem;*/
+  }
+
 }
 
 /* iPAD, LANDSCAPE */

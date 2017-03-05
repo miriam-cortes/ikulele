@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
   def scrape_song(website)
     @page = HTTParty.get(website,
       headers: {
-        'Cookie' => "__gads=ID=9076f852be57ecff:T=1477191925:S=ALNI_MZWYZcJNvsGTj85A7gFOZnoUO2HDg; __qca=P0-1944085700-1477191934000; position=1; userid=B5D0E0F3-7045-FB5C-25FB-9AD2062B43BE; OX_plg=swf|shk|pm; PHPSESSID=4492f7472b9af824196c58ca6da83cd8; scrollTop=0; cid=444; _ga=GA1.2.296721480.1477191925; __utmt=1; OX_sd=2; __utma=58811561.296721480.1477191925.1484947167.1484954896.58; __utmb=58811561.8.10.1484954897; __utmc=58811561; __utmz=58811561.1480827346.6.3.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)"
+        'Cookie' => "PHPSESSID=b3ee7cb4c7d0973c4d2b6ab1b041eb2c; __gads=ID=99e96aca2d4d68e0:T=1488504907:S=ALNI_MYz3ybxLJcUw8zilCAO-bzllIGkWg; OX_plg=swf|shk|pm; __utmt=1; ut_keepin=mcortes8181%3A6ca3cec546966b3f8d76e41f9703344f; __utma=58811561.214000959.1488504759.1488504759.1488504759.1; __utmb=58811561.10.10.1488504759; __utmc=58811561; __utmz=58811561.1488504759.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); freewheel-detected-bandwidth=0"
       }
     )
     @parse_page = Nokogiri::HTML(@page)
@@ -52,11 +52,12 @@ class Song < ActiveRecord::Base
 
   def get_chords_from_api(sticky_tabs)
     @chords_array = []
-
+    binding.pry
     sticky_tabs.split(",").each do |chord|
       chord_name, type = self.set_name_and_type(chord)
       url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord_name}" + "&typ=#{type}"
       response = HTTParty.get(url)
+      raise
       mini_chord_pic_url = response.parsed_response["uc"]["chord"][0]["chord_diag_mini"]
       mini_chord_pic_url = " " if mini_chord_pic_url == nil
       @chords_array.push(mini_chord_pic_url)
