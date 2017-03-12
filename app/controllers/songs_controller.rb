@@ -35,8 +35,7 @@ class SongsController < ApplicationController
       @song.artist_id = Artist.find_by(name: @header_array[1]).id
       @song.lyrics_tabs = @song_tab_string
       @song.key = @chords.split(",").first
-      @song.sticky_tabs = @song.get_chords_from_api(@chords)
-
+      @song.sticky_tabs = @song.split_chord_name_and_type(@chords)
 
       if @song.save
         redirect_to song_path(@song.id)

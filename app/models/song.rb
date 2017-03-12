@@ -46,53 +46,45 @@ class Song < ActiveRecord::Base
         @chords += chord['src'][25...-4] + ","
     end
 
-    @chords.gsub!("_","#") #quiestionable as to whether I need this anymore
+    # @chords.gsub!("_","#") #questionable as to whether I need this anymore
     return @chords, @song_tab_string, @header_array
   end
 
-  def get_chords_from_api(sticky_tabs)
+  def split_chord_name_and_type(sticky_tabs)
     @chords_array = []
-    binding.pry
     sticky_tabs.split(",").each do |chord|
-      chord_name, type = self.set_name_and_type(chord)
-      url = BASE_URL + "ak=#{UKE_API_KEY}" + "&r=#{chord_name}" + "&typ=#{type}"
-      response = HTTParty.get(url)
-      raise
-      mini_chord_pic_url = response.parsed_response["uc"]["chord"][0]["chord_diag_mini"]
-      mini_chord_pic_url = " " if mini_chord_pic_url == nil
-      @chords_array.push(mini_chord_pic_url)
+      @chords_array.push( self.set_name_and_type(chord) )
     end
-
     return @chords_array.join(" ")
   end
 
   def set_name_and_type(chord)
-    # change those sharp chords to flats bc my API don't like em
+    updated_chord = ''
+    # change those sharp chords to flats
     if chord[1] == "#"
       chord[0..1] = self.change_sharp_to_flat(chord[0..1])
     end
     # assign flat chord names/types
     if chord[1] == "b"
-      chord_name = chord[0..1]
+      updated_chord = chord[0..1]
       if chord.length == 2
-        type = "major"
+        updated_chord += "major"
       elsif chord.length == 3 && chord[2] == "m"
-        type = "minor"
+        updated_chord += "minor"
       else
-        type = chord[2..-1]
+        updated_chord += chord[2..-1]
       end
     else
-      chord_name = chord[0]
+      updated_chord += chord[0]
       if chord.length == 1
-        type = "major"
+        updated_chord += "major"
       elsif chord.length == 2 && chord[1] == "m"
-        type = "minor"
+        updated_chord += "minor"
       else
-        type = chord[1..-1]
+        updated_chord += chord[1..-1]
       end
     end
-
-    return chord_name, type
+    return updated_chord
   end
 
 

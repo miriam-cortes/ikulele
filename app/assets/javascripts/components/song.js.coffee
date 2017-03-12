@@ -50,10 +50,9 @@ $(document).on "click", "#stop", ->
     React.DOM.div
       className: 'song_holder'
       React.DOM.h3
-        className: 'small-1 columns favorite centered clickable'
+        className: ''
         id: 'favorite'
         onClick: this.handleFavorite
-        @state.my_favorite
       React.DOM.h3
         className: 'cursive-font small-7 columns'
         id: 'song_name'
@@ -82,11 +81,11 @@ $(document).on "click", "#stop", ->
             i
       React.DOM.div
         className: 'chords small-4 large-4 columns'
-        for i in @state.song.sticky_tabs.split(" ")
+        for chord in @state.song.sticky_tabs
           React.DOM.img
             className: 'small-6 medium-4 large-4 columns '
-            id: i
-            src: i
+            id: chord
+            src: chord
       React.DOM.p
         className: 'hidden'
         @state.song.id
