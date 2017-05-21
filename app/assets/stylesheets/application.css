@@ -23,7 +23,7 @@ a:active {
    font-family: 'Shadows Into Light Two', cursive;
  }
 
- /*.header-font { font-size: 1.3rem;}*/
+ .header-font { font-size: 1.3rem;}
 
  header {
    top: 0;
@@ -82,9 +82,13 @@ li.dropdown {
  }
 
  .search-form {
-   margin-top: 1%;
-   position: static;
+   margin-top: 10%;
+   position: absolute;
  }
+
+p {
+    margin: 1% 3%;
+}
 
 
  footer {
